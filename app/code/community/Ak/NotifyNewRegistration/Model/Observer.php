@@ -132,8 +132,8 @@ class Ak_NotifyNewRegistration_Model_Observer {
             $addressArr['telephone'] = $address->getTelephone();
             $addressArr['fax'] = $address->getFax();
             $addressArr['street'] = $address->getStreet();
-            if(count($addressArr['street']) == 1) {
-                $addressArr['street'] = $addressArr['street'][0];
+            if(is_array($addressArr['street'])) {
+                $addressArr['street'] = implode(", ", $addressArr['street']);
             }
 
             $customerArr['address'] = new Varien_Object($addressArr);
